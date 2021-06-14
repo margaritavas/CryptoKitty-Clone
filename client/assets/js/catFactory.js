@@ -175,7 +175,7 @@ function normalCollar() {
     
     function collarShape4() {
         normalCollar()
-        $('.collar_shape').css('display', 'none')
+        $('.collar_shape').css('display', 'none')        
    }
    
    function animationVariation(num) {

@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="assets/js/web3.min.js"></script>
+  <script src="./abi.js"></script>
+  
 
   <link rel="stylesheet" href="assets/css/mystyle.css">
   <link rel="stylesheet" href="assets/css/cats.css">
@@ -162,11 +165,13 @@
         </div>
         <br>
 <div class="buttons">
-    <button type="button" id="new_kitty" class="btn btn-info new"><b>New kitty</b></button><br><br>
+    <button type="button" id="create_kitty" class="btn btn-info new"><b>Create kitty</b></button><br><br>
     <button type="button" id="random_kitty" class="btn btn-warning random"><b>Get random kitty</b></button><br><br>
     <button type="button" id="default_kitty" class="btn btn-danger default"><b>Default kitty</b></button>
 </div>
+<br>
 
+<div class="alert alert-success" role="alert" id="kittyCreation" style="display:none"></div>
             </div>
 
             </div>
@@ -185,5 +190,6 @@
   <script src="assets/js/colors.js"></script>
   <script src="assets/js/catSettings.js"></script>
   <script src="assets/js/catFactory.js"></script>
+  <script src="./index.js"></script>
 
 </html>

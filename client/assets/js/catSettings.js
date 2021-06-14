@@ -1,4 +1,3 @@
-
 var colors = Object.values(allColors())
 
 var defaultDNA = {
@@ -18,10 +17,6 @@ var defaultDNA = {
 // when page load
 
 $( document ).ready(function() {
-  createDefaultCat();
-})
-
-function createDefaultCat(){
   $('#dnabody').html(defaultDNA.headcolor);
   $('#dnamouth').html(defaultDNA.mouthColor);
   $('#dnaeyes').html(defaultDNA.eyesColor);
@@ -32,10 +27,11 @@ function createDefaultCat(){
    $('#dnacollarColor').html(defaultDNA.collarColor);
    $('#dnaanimation').html(defaultDNA.animation);
    $('#dnaspecial').html(defaultDNA.lastNum);
-  renderCat(defaultDNA);
-}
+  renderCat(defaultDNA)
+});
 
-$("#random_kitty").click(()=>{
+
+$("#random_kitty").on("click", function(){
   var randomDNA = {
     "headcolor" : Math.floor(Math.random() * 89) + 10,
     "mouthColor" : Math.floor(Math.random() * 89) + 10,
@@ -59,11 +55,11 @@ $("#random_kitty").click(()=>{
    $('#dnaanimation').html(randomDNA.animation);
    $('#dnaspecial').html(randomDNA.lastNum);
   renderCat(randomDNA);
-})
+});
 
-$("#default_kitty").click(()=>{
-  createDefaultCat()
-})
+$("#default_kitty").on("click", function(){
+  renderCat(defaultDNA)
+});
 
 function getDna(){
     var dna = ''
