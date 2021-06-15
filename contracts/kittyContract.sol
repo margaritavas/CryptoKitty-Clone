@@ -2,8 +2,8 @@
 
 pragma solidity ^0.8.3;
 
-import "./IERC721.sol";
 import "./Ownable.sol";
+import "./IERC721.sol";
 
 contract kittyContract is IERC721, Ownable {
 
@@ -21,7 +21,7 @@ contract kittyContract is IERC721, Ownable {
         uint256 dadId,
         uint256 genes
     );
-
+    
     struct Kitty{
         uint256 genes;
         uint64 birthTime;
@@ -33,9 +33,10 @@ contract kittyContract is IERC721, Ownable {
     Kitty[] kitties;
 
 
-    mapping(address => uint256) ownershipTokenCount;
-
+    mapping (address => uint256) ownershipTokenCount;
     mapping (uint256 => address) public kittyIndexToOwner;
+    mapping (uint256 => address) public kittyIndexToApproved;
+    mapping (address => mapping(address => bool)) private _operatorApprovals;
 
 function createKittyGen0(uint256 _genes) public onlyOwner returns(uint256){
     require(gen0Counter< CREATION_LIMIT_GEN0);
@@ -123,6 +124,7 @@ function _transfer(address _from, address _to, uint256 _tokenId) internal {
 
     if(_from != address(0)){
         ownershipTokenCount[_from]--;
+        delete kittyIndexToApproved[_tokenId];
     }
 
 emit Transfer(_from, _to, _tokenId);
@@ -130,5 +132,36 @@ emit Transfer(_from, _to, _tokenId);
 
 function _owns(address _claimant, uint256 _tokenId) internal view returns(bool){
     return kittyIndexToOwner[_tokenId]==_claimant;
+}
+
+function approve(address _approved, uint256 _tokenId) override public {
+    require (_owns(msg.sender, _tokenId), "ERC721: you do not own this token");
+    
+    _approve(_approved, _tokenId);
+    emit Approval(msg.sender, _approved, _tokenId);
+}
+
+function _approve(address _approved, uint256 _tokenId) internal{
+    kittyIndexToApproved[_tokenId] = _approved;
+}
+
+function setApprovalForAll(address _operator, bool approved) override external{
+    require (_operator != msg.sender);
+
+    _setApprovalForAll(_operator, approved);
+    emit ApprovalForAll(msg.sender, _operator, approved);
+}
+function _setApprovalForAll(address _operator, bool approved) internal{
+_operatorApprovals[msg.sender][_operator] = approved;
+}
+
+function getApproved(uint256 _tokenId) external view override returns (address){
+    require (_tokenId < kitties.length); //Token must exist;
+
+    return kittyIndexToApproved[_tokenId];
+}
+
+function isApprovedForAll(address _owner, address _operator) external view override returns (bool){
+    return _operatorApprovals[_owner][_operator];
 }
 }
