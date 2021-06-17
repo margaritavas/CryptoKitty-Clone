@@ -4,13 +4,15 @@ pragma solidity ^0.8.3;
 
 import "./Ownable.sol";
 import "./IERC721.sol";
+import "./IERC721Receiver.sol";
 
 contract kittyContract is IERC721, Ownable {
-
+    
+    uint256 public constant CREATION_LIMIT_GEN0=10;
     string public constant tokenName = "MargaritaKitties";
     string public constant tokenSymbol = "MK";
 
-    uint256 public constant CREATION_LIMIT_GEN0=10;
+    bytes4 internal constant MAGIC_ERC721_RECEIVED = bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"));
 
     uint256 public gen0Counter;
     
@@ -110,7 +112,37 @@ function ownerOf(uint256 _tokenId) external view override returns (address){
     return kittyIndexToOwner[_tokenId];
 }
 
-function transfer(address _to, uint256 _tokenId) external override {
+function _safeTransfer(address _from, address _to, uint256 _tokenId, bytes memory _data) internal{
+    _transfer(_from, _to, _tokenId);
+    require(_checkERC721Support(_from, _to, _tokenId, _data));
+
+}
+
+function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes calldata _data) override external{
+    require(_owns(_from, _tokenId));
+    require(_to != address(0));
+    require(_tokenId < kitties.length);
+    require(msg.sender == _from || _approvedFor(msg.sender, _tokenId) || isApprovedForAll(_from, msg.sender));
+
+    _safeTransfer(_from, _to, _tokenId, _data );
+}
+
+function safeTransferFrom(address _from, address _to, uint256 _tokenId) override external{
+    _safeTransfer(_from, _to, _tokenId, "");
+}
+
+
+function transferFrom(address _from, address _to, uint256 _tokenId) override public {
+    require(_owns(_from, _tokenId));
+    require(_to != address(0));
+    require(_tokenId < kitties.length);
+    require(msg.sender == _from || _approvedFor(msg.sender, _tokenId) || isApprovedForAll(_from, msg.sender));
+
+    _transfer(msg.sender, _to, _tokenId);
+}
+
+
+function transfer(address _to, uint256 _tokenId) public override {
     require (_to != address(0), "ERC721: invalid address");
     require (_to != address(this), "ERC721: cannot transfer to yourself");
     require (_owns(msg.sender,_tokenId), "ERC721: you do not own this token");
@@ -130,19 +162,11 @@ function _transfer(address _from, address _to, uint256 _tokenId) internal {
 emit Transfer(_from, _to, _tokenId);
 }
 
-function _owns(address _claimant, uint256 _tokenId) internal view returns(bool){
-    return kittyIndexToOwner[_tokenId]==_claimant;
-}
-
 function approve(address _approved, uint256 _tokenId) override public {
     require (_owns(msg.sender, _tokenId), "ERC721: you do not own this token");
     
     _approve(_approved, _tokenId);
     emit Approval(msg.sender, _approved, _tokenId);
-}
-
-function _approve(address _approved, uint256 _tokenId) internal{
-    kittyIndexToApproved[_tokenId] = _approved;
 }
 
 function setApprovalForAll(address _operator, bool approved) override external{
@@ -151,6 +175,7 @@ function setApprovalForAll(address _operator, bool approved) override external{
     _setApprovalForAll(_operator, approved);
     emit ApprovalForAll(msg.sender, _operator, approved);
 }
+
 function _setApprovalForAll(address _operator, bool approved) internal{
 _operatorApprovals[msg.sender][_operator] = approved;
 }
@@ -161,7 +186,35 @@ function getApproved(uint256 _tokenId) external view override returns (address){
     return kittyIndexToApproved[_tokenId];
 }
 
-function isApprovedForAll(address _owner, address _operator) external view override returns (bool){
+function isApprovedForAll(address _owner, address _operator) public view override returns (bool){
     return _operatorApprovals[_owner][_operator];
 }
+
+function _approve(address _approved, uint256 _tokenId) internal{
+    kittyIndexToApproved[_tokenId] = _approved;
+}
+
+function _owns(address _claimant, uint256 _tokenId) internal view returns(bool){
+    return kittyIndexToOwner[_tokenId]==_claimant;
+}
+function _approvedFor(address _claimant, uint256 _tokenId) internal view returns(bool){
+    return kittyIndexToApproved[_tokenId]==_claimant;
+    }
+
+function _checkERC721Support(address _from, address _to, uint256 _tokenId, bytes memory _data) internal returns(bool){
+    if(!_isContract(_to)){
+        return true;
+    }
+    bytes4 returnData = IERC721Receiver(_to).onERC721Received(msg.sender, _from, _tokenId, _data);
+    return returnData == MAGIC_ERC721_RECEIVED;
+}
+
+function _isContract(address _to) view internal returns(bool){
+    uint32 size;
+    assembly{
+        size := extcodesize(_to)
+    }
+    return size > 0;
+}
+
 }
