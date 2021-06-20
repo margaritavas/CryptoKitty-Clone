@@ -1,14 +1,14 @@
 *, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 html {
-    box-sizing: border-box;
-    overflow-y: scroll;
+  box-sizing: border-box;
+  overflow-y: scroll;
 }
 body {
-    background: #607d8b;
+    background: rgb(235, 240, 245);
  
 }
 
@@ -16,7 +16,7 @@ body {
   background-color: black;
   width: 197px;
   height: 183px;
-  left: 43px;
+  left: 58px;
   border-radius: 50% 50% 45% 45%;
   position: absolute;
   }
@@ -238,7 +238,7 @@ body {
   }
   .tail {
     position: absolute;
-    margin-left: 40px;
+    margin-left: 58px;
     margin-top: 40px;
     height: 60px;
     width: 80px;
@@ -252,8 +252,8 @@ body {
     
     .tail-mask {
       position: absolute;
-      margin-top: 40px;
-      margin-left: 100px;
+      margin-top: 46px;
+      margin-left: 120px;
       height: 35px;
       width: 78px;
       background-color: #e1f0fe;
@@ -264,15 +264,15 @@ body {
     
     .tail-end {
       position: absolute;
-      margin-top: 63px;
-      margin-left: 130px;
-      height: 19px;
-      width: 19px;
-      border-radius: 50%;
-      background-color: #000000;
-      z-index: 1;
-      top: 201px;
-      left: 135px;
+    margin-top: 64px;
+    margin-left: 149px;
+    height: 19px;
+    width: 19px;
+    border-radius: 50%;
+    background-color: #000000;
+    z-index: 1;
+    top: 201px;
+    left: 135px;
     }
   
     .feet{

@@ -1,6 +1,4 @@
 
-
-
 .frontend {
     height: 90vh;
     padding-top: 105px;    
@@ -25,7 +23,7 @@
 }
 
 .nav-link b:hover {
-    color: #ed5b0d;
+    color: #0d49ed;
 }
 
 .catGroup { 
@@ -38,7 +36,7 @@
 }
 
 .banner {
-    background-color: rgba(161, 36, 7, 0.8);
+  background-color:#004085;
     margin-top: -30px;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -93,16 +91,16 @@ footer {
 
 /* BUTTONS */
 
-.red-btn {
-    background-image: -webkit-linear-gradient(0deg, #f14437 0%, #ed5b0d 99%);
+.blue-btn {
+  background-image: -webkit-linear-gradient(0deg, #023b79 0%, #0557af 99%);
     color: #ffffff;
     border-radius: 30px;
     padding: 17px 55px;
     font-weight: 600;
     letter-spacing: 1px;
   }
-  .red-btn:hover {
-    background-color: #cc3737;
+  .blue-btn:hover {
+    background-color: #023b79;
     color: #ffffff;
   }
   
