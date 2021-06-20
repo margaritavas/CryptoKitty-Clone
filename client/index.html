@@ -1,195 +1,102 @@
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academy kitties </title>
-  <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <script src="assets/bootstrap/js/popper.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script src="assets/js/web3.min.js"></script>
-  <script src="./abi.js"></script>
-  
-
-  <link rel="stylesheet" href="assets/css/mystyle.css">
-  <link rel="stylesheet" href="assets/css/cats.css">
-  <link rel="stylesheet" href="assets/css/colors.css">
-  <link rel="stylesheet" href="assets/css/factory.css">
-  <link rel="stylesheet" href="assets/css/frontend.css">
-  <link rel="stylesheet" href="assets/css/animations.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto kittens </title>
+    <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <script src="assets/bootstrap/js/popper.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/mystyle.css">
+    <link rel="stylesheet" href="assets/css/colors.css">
+    <link rel="stylesheet" href="assets/css/frontend.css">
+    <script src="assets/js/web3.min.js"></script>
+    <script src="./index.js"></script>
+    <script src="./abi.js"></script>
 </head>
-  <body>
-    <div class="container p-5" style="margin-top: 12vh;margin-bottom: 10vh;">
-        <div align="center">
-        <h1 class="c-white">The Kitties Factory</h1>
-        <p class="c-white">Create your custom Kitty</p>
+
+    <body cz-shortcut-listen="true" style="background-color:#e2f0ff">
+
+    <!-- Start menu -->
+ <div id="menu"></div>
+    <!-- End menu -->
+    <div class="animation-wrapper">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
     </div>
+
+
+    <div class="frontend" align="center">
+
+        <img src="assets/images/group.png" class="catGroup"><br><br>
+        <div class="container">
+            <div class="banner">
+                <h3 class="c-white m-2">Collect and breed furrever friends!</h3>
+                <button class="btn white-btn mt-2 c-black">Get your own kitty</button>
+            </div>
+        </div>
+        <div>
+
+        </div>
+
+    </div>
+
+    <div class="container middleBox" align="center">
+        <h1 class="m-4">Features</h1>
         <div class="row">
-            <div class="col-lg-4 catBox m-2 light-b-shadow">
-                <div class="cat">
-                    <div class="tail"></div>
-                    <div class="tail-mask"></div>
-                    <div class="tail-end"></div>
-                    
-                    <div class="ears">
-                         <div class="ear left_ear">
-                             <div class="inner_ear left_inner_ear"></div>
-                        </div>
-                         <div class="ear right_ear">
-                         <div class="inner_ear right_inner_ear"></div>
-                           </div>
-                           </div>
-                         
-                <div id="head" class="cat_head" >
-                    <div class="eyes">
-                        <div class="eye">
-                            <div class="pupils">
-                                <span class="inner_eye_big"></span>
-                                <span class="inner_eye_small"></span>
-                                <span class="inner_eye_smallest"></span>
-                            </div>
-                        </div>
-                        <div class="eye">
-                            <div class="pupils">
-                                <span class="inner_eye_big"></span>
-                                <span class="inner_eye_small"></span>
-                                <span class="inner_eye_smallest"></span>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="nose"></div>
-                        <div class=cat_mouth-contour></div>
-                        <div class="cat_mouth-left"></div>
-                        <div class="cat_mouth-right"></div>
-                        <div class="cat_whiskers-left"></div>
-                        <div class="cat_whiskers-right"></div>
-                        </div>
-                        <div class="body">
-                            <div class="collar">
-                                <div class="collar_shape"></div>
-                            </div>
-                        <div class="belly"></div> 
-                        <div class="feet">
-                            <div class="foot">
-                                <div class="inner_foot_small1"></div>
-                                <div class="inner_foot_small2"></div>
-                                <div class="inner_foot_small3"></div>
-                                <div class="inner_foot_big"></div>
-                            </div>
-                            <div class="foot">
-                                <div class="inner_foot_small4"></div>
-                                <div class="inner_foot_small5"></div>
-                                <div class="inner_foot_small6"></div>
-                                <div class="inner_foot_big"></div>
-                            </div>
-                        </div>
+
+            <div class="col-lg-4 pointer">
+                <div class="featureBox">
+                    <div class="egg">
+                        <img src="assets/images/coin.png" style="margin: 25px;">
                     </div>
+
+                    <h4>Buy & sell Cats</h4>
+                    <p>
+                     Buy or sell kitties in a market place using crypto-currency!
+                     
+                     
+                     
+                    </p>
+                </div>
             </div>
-    
-    
-    <div class="dnaDiv" id="catDNA">
-        <b>
-            DNA:
-            <!-- Colors -->
-             <span id="dnabody"></span>
-             <span id="dnamouth"></span>
-             <span id="dnaeyes"></span>
-             <span id="dnaears"></span>
-            
-             <!-- Cattributes -->
-             <span id="dnashape"></span>
-             <span id="dnacollarShape"></span>
-             <span id="dnashapeColor"></span>
-             <span id="dnacollarColor"></span>
-             <span id="dnaanimation"></span>
-             <span id="dnaspecial"></span>
-        </b>
-    </div>
-</div>
-<div class="col-lg-7 cattributes m-2 light-b-shadow">
-    <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#catColors"> Adjust colors</a></li>
-    <li><a data-toggle="tab" href="#cattributes"> Adjust cattributes</a></li>
-</ul>
-<br>
-<br>
-<!-- Cat colors -->
-<div class="tab-content">
-<div id="catColors" class="tab-pane fade in active">
-                <div class="form-group">
-                    <label for="formControlRange"><b>Head | body</b><span class="badge badge-dark ml-2" id="headcode"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="bodycolor">
+            <div class="col-lg-4 pointer">
+                <div class="featureBox">
+                    <div class="egg">
+                        <img src="assets/images/reward.png" style="margin: 25px;">
+                    </div>
+                    <h4>Create collections & earn rewards</h4>
+                    <p>
+                       Collect all types of kitties with unique Cattributes!
+                       Earn special kitties from breeding, sell them or <b>Love</b> them.
+                    </p>
                 </div>
-                <div class="form-group">
-                    <label for="formControlRange"><b>Mouth | belly</b><span class="badge badge-dark ml-2" id="bellycode"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="mouthcolor">
-                </div>
-                <div class="form-group">
-                    <label for="formControlRange"><b>Eyes</b><span class="badge badge-dark ml-2" id="eyescode"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="eyescolor">
-                </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="formControlRange"><b>Ears | Paws</b><span class="badge badge-dark ml-2" id="earscode"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="earscolor">
-                </div>
-                </div>
-
-            <div id="cattributes" class="tab-pane fade">
-                <div class="form-group">
-                    <label for="formControlRange"><b>Eyes shape</b><span class="badge badge-dark ml-2" id="eyeName"></span></label>
-                    <input type="range" min="1" max="4" class="form-control-range" id="eyeshape">
-                </div>
-
-                <div class="form-group">
-                    <label for="formControlRange"><b>Collar shape</b><span class="badge badge-dark ml-2" id="shapeName"></span></label>
-                    <input type="range" min="1" max="5" class="form-control-range" id="collarshape">
-                </div>
-                <div class="form-group">
-                    <label for="formControlRange"><b>Collar shape color</b><span class="badge badge-dark ml-2" id="shapecode"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="shapecolor">
-                </div>
-                <div class="form-group">
-                    <label for="formControlRange"><b>Collar color</b><span class="badge badge-dark ml-2" id="collarcode"></span></label>
-                    <input type="range" min="10" max="98" class="form-control-range" id="collarcolor">
-                </div>
-
-                <div class="form-group">
-                    <label for="formControlRange"><b>Animation</b><span class="badge badge-dark ml-2" id="animationName"></span></label>
-                    <input type="range" min="1" max="7" class="form-control-range" id="animation">
+            <div class="col-lg-4 pointer">
+                <div class="featureBox">
+                    <div class="egg">
+                        <img src="assets/images/pop.png" style="margin: 25px;">
+                    </div>
+                    <h4>Breed adorable cats & unlock rare traits</h4>
+                    <p>
+                        Create unique kitties by pairing two cats. Fuse them to get the most rare kitties!
+                    </p>
                 </div>
             </div>
         </div>
-        <br>
-<div class="buttons">
-    <button type="button" id="create_kitty" class="btn btn-info new"><b>Create kitty</b></button><br><br>
-    <button type="button" id="random_kitty" class="btn btn-warning random"><b>Get random kitty</b></button><br><br>
-    <button type="button" id="default_kitty" class="btn btn-danger default"><b>Default kitty</b></button>
-</div>
-<br>
-
-<div class="alert alert-success" role="alert" id="kittyCreation" style="display:none"></div>
-            </div>
-
-            </div>
-            <br>
-
-        </div>
-
-
 
     </div>
+
     <footer align="left">
         <p>Ivan on Tech Academy 2021</p>
     </footer>
 
-  </body>
-  <script src="assets/js/colors.js"></script>
-  <script src="assets/js/catSettings.js"></script>
-  <script src="assets/js/catFactory.js"></script>
-  <script src="./index.js"></script>
+</body>
+
+<script src="assets/js/components.js"></script>
+
 
 </html>
