@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto Kittens </title>
     <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="./abi.js"></script>
-    <script type="text/javascript" src="./index.js"></script>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <script src="assets/bootstrap/js/popper.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -17,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/animations.css">    
     <link rel="stylesheet" href="assets/css/factory.css">
     <link rel="stylesheet" href="assets/css/frontend.css">
-    <script src="assets/js/web3.min.js"></script>
+    <script src="./web3.min.js"></script>
     <script src="./index.js"></script>
     <script src="./abi.js"></script>
 
@@ -175,7 +173,7 @@
         
             <br>
     <div class="buttons">
-        <button type="button" id="create_kitty" class="btn btn-info new"><b>Create kitty</b></button><br><br>
+        <button type="button" id="create_kitty" class="btn btn-info new" onclick="createKitty()"><b>Create kitty</b></button><br><br>
         <button type="button" id="random_kitty" class="btn btn-warning random"><b>Get random kitty</b></button><br><br>
         <button type="button" id="default_kitty" class="btn btn-danger default"><b>Default kitty</b></button>
     </div>

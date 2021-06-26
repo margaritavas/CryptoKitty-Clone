@@ -1,8 +1,10 @@
 var web3 = new Web3(Web3.givenProvider);
 
+
 var instance;
 var user;
-var contractAddress="0x413721A619954b82510d0eaDA6c97A2dEF98a321";
+var contractAddress="0xdF01e5dfeB6F11e2b08eA417BF4caf5219bdEe33";
+
 
 $(document).ready(function(){
     window.ethereum.enable().then(function(accounts){
@@ -32,15 +34,61 @@ $(document).ready(function(){
 })
   })
 
+  function createKitty() {
+    var dnaStr = getDna();
+    let res;
+    try {
+      res = instance.methods.createKittyGen0(dnaStr).send();
+    } catch (error) {
+      console.log("Cat creation failed");
+    }
+  }
+//Gen 0 cats for sale
+async function contractCatalog() {
+  var arrayId = await instance.methods.getAllTokenOnSale().call();
+  for (i = 0; i < arrayId.length; i++) {
+    if(arrayId[i] != "0"){
+      appendKitty(arrayId[i])
+    }    
+  }
+}
 
-  $('#create_kitty').click(() =>{
-    var DNA = getDna();
-      instance.methods.createKittyGen0(DNA).send({}, function(error, txHash){
-      if (error){
-        alert("Cat creation failed!")
-      }
-      else{
-        console.log(txHash)
-      }
-    })
-  });
+//Get kittues of a current address
+async function myKitties() {
+  var arrayId = await instance.methods.tokensOfOwner(user).call();
+  for (i = 0; i < arrayId.length; i++) {
+    appendKitty(arrayId[i])
+  }
+}
+
+//Get kittues for breeding that are not selected
+async function breedKitties(gender) {
+  var arrayId = await instance.methods.tokensOfOwner(user).call();
+  for (i = 0; i < arrayId.length; i++) {
+    appendBreed(arrayId[i], gender)
+  }
+}
+
+//Appending cats to breed selection
+async function appendBreed(id, gender) {
+  var kitty = await instance.methods.getKitty(id).call()
+  breedAppend(kitty[0], id, kitty['generation'], gender)
+}
+
+//Appending cats to breed selection
+async function breed(dadId, mumId) {
+  try {
+    await instance.methods.Breeding(dadId, mumId).send()
+  } catch (err) {
+    log(err)
+  }
+}
+
+//Appending cats for catalog
+async function appendKitty(id) {
+  var kitty = await instance.methods.getKitty(id).call()
+  appendCat(kitty[0], id, kitty['generation'])
+}
+
+
+  

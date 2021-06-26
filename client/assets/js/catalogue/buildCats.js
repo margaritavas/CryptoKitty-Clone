@@ -4,326 +4,246 @@
 
 var colors = Object.values(allColors())
 
-function headColor(code, id) {
-
-    var color = colors[code]
-    $('#head' + id + ', #chest' + id).css('background', '#' + color)
+function headcolor(color,code) {
+    $('.cat_head, .body').css('background', '#' + color)  //This changes the color of the cat
+    $('#headcode').html('code: '+code) //This updates text of the badge next to the slider
+    $('#dnabody').html(code) //This updates the body color part of the DNA that is displayed below the cat
 }
 
-function mouthAndBelly(code, id) {
-    var color = colors[code]
-    $('#mouth-contour' + id + ', #tail' + id + ', #chest_inner' + id).css('background', '#' + color)
+function mouthColor(color,code) {
+    $('.cat_mouth-contour, .belly').css('background', '#' + color)  //This changes the color of the cat
+    $('#bellycode').html('code: '+code) //This updates text of the badge next to the slider
+    $('#dnamouth').html(code) //This updates the body color part of the DNA that is displayed below the cat
 }
 
-function eyeColor(code, id) {
-    var color = colors[code]
-    $('#catEye' + id).find('span').css('background', '#' + color)
+function eyesColor(color,code) {
+    $('.eye').css('background', '#' + color)  //This changes the color of the cat
+    $('#eyescode').html('code: '+code) //This updates text of the badge next to the slider
+    $('#dnaeyes').html(code) //This updates the body color part of the DNA that is displayed below the cat
 }
 
-function earsAndPaw(code, id) {
-    var color = colors[code]
-    $('#leftEar' + id + ', #rightEar' + id + ', #pawLeft' + id + ', #pawRight' + id + ', #pawRightInner' + id + ', #pawLeftInner' + id).css('background', '#' + color)
-
+function earsColor(color,code) {
+    $('.ear, .foot').css('background', '#' + color)  //This changes the color of the cat
+    $('#earscode').html('code: '+code) //This updates text of the badge next to the slider
+    $('#dnaears').html(code) //This updates the body color part of the DNA that is displayed below the cat
 }
 
-//Middle decoration color
-function midColor(code, id) {
-    var color = colors[code]
-    $('#midDot' + id).css('background', '#' + color)
+function shapeColor(color,code) {
+    $('.collar_shape').css('background', '#' + color)  //This changes the color of the cat
+    $('#shapecode').html('code: '+code) //This updates text of the badge next to the slider
+    $('#dnashapeColor').html(code) //This updates the body color part of the DNA that is displayed below the cat
 }
 
-//Sides decoration color
-function SidesColor(code, id) {
-    var color = colors[code]
-    $('#leftDot' + id).css('background', '#' + color)
-    $('#rightDot' + id).css('background', '#' + color)
+function shapeColor(color,code) {
+    $('.collar_shape').css('background', '#' + color)  //This changes the color of the cat
+    $('#shapecode').html('code: '+code) //This updates text of the badge next to the slider
+    $('#dnashapeColor').html(code) //This updates the body color part of the DNA that is displayed below the cat
 }
 
-// Variation functions for range-bars
-
-//8 eye types
-function eyeVariation(num, id) {
-
+function collarColor(color,code) {
+    $('.collar').css('background', '#' + color)  //This changes the color of the cat
+    $('#collarcode').html('code: '+code) //This updates text of the badge next to the slider
+    $('#dnacollarColor').html(code) //This updates the body color part of the DNA that is displayed below the cat
+}
+//###################################################
+//Functions below will be used later on in the project
+//###################################################
+function eyeVariation(num) {
+    $('#dnashape').html(num)
     switch (num) {
-        case "1":
-            normalEyes(id)
-            $('#eyeName' + id).html('Basic')
+        case 1:
+            normalEyes()
+            $('#eyeName').html('Basic')
             break
-        case "2":
-            normalEyes(id)
-            $('#eyeName' + id).html('Chill')
-            return eyesType1(id)
+        case 2:
+            eyesType1()
+            $('#eyeName').html('Chill')
             break
-        case "3":
-            normalEyes(id)
-            $('#eyeName' + id).html('Cute')
-            return eyesType2(id)
+        case 3:
+            eyesType2()
+            $('#eyeName').html('Scared')
             break
-        case "4":
-            normalEyes(id)
-            $('#eyeName' + id).html('Watching')
-            return eyesType3(id)
-            break
-        case "5":
-            normalEyes(id)
-            $('#eyeName' + id).html('Night')
-            return eyesType4(id)
-            break
-        case "6":
-            normalEyes(id)
-            $('#eyeName' + id).html('Wonder down')
-            return eyesType5(id)
-            break
-        case "7":
-            normalEyes(id)
-            $('#eyeName' + id).html('Wonder up')
-            return eyesType6(id)
-            break
-        case "8":
-            normalEyes(id)
-            $('#eyeName' + id).html('Circle')
-            return eyesType7(id)
+        case 4:
+            eyesType3()
+            $('#eyeName').html('Looks up')
             break
     }
 }
 
+function normalEyes() {
+    $('.eye').css('border', 'none')
+}
 
-//8 decorations types
-function decorationVariation(num, id) {
+function eyesType1() {
+    normalEyes()
+      $('.eye').css('border-top', '8px solid')
+      $('.inner_eye_big').css('width', '7px')
+      $('.inner_eye_big').css('left', '15px')
+      $('.inner_eye_small').css('display', 'none')
+      $('.inner_eye_smallest').css('display', 'none')
+}
 
+ function eyesType2() {
+    normalEyes()
+     $('.pupils').css('width', '10px')
+     $('.pupils').css('left', '16px')
+     $('.inner_eye_big').css('display', 'none')
+     $('.inner_eye_small').css('display', 'none')
+     $('.inner_eye_smallest').css('display', 'none')
+}
+
+ function eyesType3() {
+    normalEyes() 
+     $('.pupils').css('width', '24px')
+     $('.pupils').css('left','14px' )
+     $('.pupils').css('top', '0px')
+     $('.inner_eye_big').css('width', '7px')
+     $('.inner_eye_big').css('left', '15px')
+     $('.inner_eye_small').css('display', 'none')
+     $('.inner_eye_smallest').css('display', 'none')
+    
+}
+
+function collarVariation(num) {
+    $('#dnacollarShape').html(num)
     switch (num) {
-        case "1":
-            $('#decorationName' + id).html('Basic')
-            normaldecoration(id)
+        case 1:
+            $('#shapeName').html('Circle')
+            normalCollar()
             break
-        case "2":
-            $('#decorationName' + id).html('Inverted')
-            decorationType1(id)
+        case 2:
+            
+            $('#shapeName').html('Rectangle')
+            collarShape1()
             break
-        case "3":
-            $('#decorationName' + id).html('Twisted')
-            decorationType2(id)
+        case 3:
+            
+            $('#shapeName').html('Diamond')
+            collarShape2()
             break
-        case "4":
-            $('#decorationName' + id).html('Uniform')
-            decorationType3(id)
+         case 4:
+            
+            $('#shapeName').html('Oval')
+            collarShape3()
             break
-        case "5":
-            $('#decorationName' + id).html('Uniform twist')
-            decorationType4(id)
+        case 5:
+            
+            $('#shapeName').html('None')
+            collarShape4()
             break
-        case "6":
-            $('#decorationName' + id).html('Tribal')
-            decorationType5(id)
-            break
-        case "7":
-            $('#decorationName' + id).html('Propeller')
-            decorationType6(id)
-            break
-        case "8":
-            $('#decorationName' + id).html('Single')
-            decorationType7(id)
-            break
+            
     }
 }
+function normalCollar() {
+    $('.collar_shape').css('border', 'none')
+}
 
-//6 Animations 
-function animationVariation(num, id) {
-
-    switch (num) {
-        case "1":
-            $('#animationName' + id).html('Moving head')
-            movingHead(id)
-            break
-        case "2":
-            $('#animationName' + id).html('Moving tail')
-            movingTail(id)
-            break
-        case "3":
-            $('#animationName' + id).html('Moving ears')
-            movingEars(id)
-            break
-        case "4":
-            $('#animationName' + id).html('Move left Ear')
-            leftEar(id)
-            break
-        case "5":
-            $('#animationName' + id).html('Move right Ear')
-            rightEar(id)
-            break
-        case "6":
-            $('#animationName' + id).html('Attentive ears')
-            attentiveCat(id)
-            break
+     function collarShape1() {
+        normalCollar()
+         $('.collar_shape').css('border-radius', '0px')
+         $('.collar_shape').css('width', '30px')
+         $('.collar_shape').css('left', '30px')
+         $('.collar_shape').css('top', '6px')
+         $('.collar_shape').css('transform', 'rotate(-1deg)')
+         normalCollar()
     }
-}
 
-// **   Eyes **  //
+     function collarShape2() {
+        normalCollar()
+         $('.collar_shape').css('border-radius', '0px')
+         $('.collar_shape').css('width', '20px')
+         $('.collar_shape').css('height', '20px')
+         $('.collar_shape').css('left', '32px')
+         $('.collar_shape').css('top', '11px')
+         $('.collar_shape').css('transform', 'rotate(45deg)')
+    }
 
-function normalEyes(id) {
-    $('#catEye' + id).find('span').css('border', 'none')
-}
-
-//top
-function eyesType1(id) {
-    $('#catEye' + id).find('span').css('border-top', '15px solid')
-}
-
-//bottom
-function eyesType2(id) {
-    $('#catEye' + id).find('span').css('border-bottom', '15px solid')
-}
-
-//top and bottom
-function eyesType3(id) {
-    $('#catEye' + id).find('span').css({ 'border-top': '15px solid', 'border-bottom': '15px solid' })
-}
-
-//Right and left
-function eyesType4(id) {
-    $('#catEye' + id).find('span').css({ 'border-right': '15px solid', 'border-left': '15px solid' })
-}
-
-//Right left top
-function eyesType5(id) {
-    $('#catEye' + id).find('span').css({ 'border-right': '15px solid', 'border-left': '15px solid', 'border-top': '15px solid' })
-}
-//Right left botton
-function eyesType6(id) {
-    $('#catEye' + id).find('span').css({ 'border-right': '15px solid', 'border-left': '15px solid', 'border-bottom': '15px solid' })
-}
-//Full shape
-function eyesType7(id) {
-    $('#catEye' + id).find('span').css('border', '15px solid')
-}
-
-// **   Decoration **  //
-
-// ** Angles ** //
-
-function normaldecoration(id) {
-    //Remove all style from other decorations
-    //In this way we can also use normalDecoration() to reset the decoration style
-    $('#midDot' + id).css({ "transform": "rotate(0deg)", "height": "48px", "width": "14px", "top": "1px", "border-radius": "0 0 50% 50%" })
-    $('#leftDot' + id).css({ "transform": "rotate(0deg)", "height": "35px", "width": "14px", "top": "1px", "border-radius": "50% 0 50% 50%" })
-    $('#rightDot' + id).css({ "transform": "rotate(0deg)", "height": "35px", "width": "14px", "top": "1px", "border-radius": "0 50% 50% 50%" })
-}
-
-//inverted
-function decorationType1(id) {
-    $('#midDot' + id).css("transform", "rotate(180deg)")
-    $('#leftDot' + id).css("transform", "rotate(0deg)")
-    $('#rightDot' + id).css("transform", "rotate(0deg)")
-}
-
-//Twiss
-function decorationType2(id) {
-    $('#midDot' + id).css("transform", "rotate(180deg)")
-    $('#leftDot' + id).css("transform", "rotate(180deg)")
-    $('#rightDot' + id).css("transform", "rotate(180deg)")
+     function collarShape3() {
+        normalCollar()
+         $('.collar_shape').css('border-radius', '100px/ 50px')
+         $('.collar_shape').css('width', '29px')
+         $('.collar_shape').css('height', '14px')
+         $('.collar_shape').css('left', '30px')
+         $('.collar_shape').css('top', '14px')
+         $('.collar_shape').css('transform', 'rotate(90deg)')
+    }
+    
+    function collarShape4() {
+        normalCollar()
+        $('.collar_shape').css('display', 'none')        
+   }
+   
+   function animationVariation(num) {
+    $('#dnaanimation').html(num)
+    switch (num) {
+        case 1:
+            animationType1()
+            $('#animationName').html('Head move')
+            break
+        case 2:
+            animationType2()
+            $('#animationName').html('Ears move')
+            break
+        case 3:
+            animationType3()
+            $('#animationName').html('Big eyes')
+            break
+        case 4:
+            animationType4()
+            $('#animationName').html('Feet move')
+            break
+        case 5:
+            animationType5()
+            $('#animationName').html('Jiggly belly')
+            break
+        case 6:
+        animationType6()
+        $('#animationName').html('Tail wiggle')
+        break
+        case 7:
+            animationType7()
+            $('#animationName').html('No animation')
+            break
+    }}
 
 
-}
+    function animationType1(){
+        $(".cat_head").addClass("movingHead");
+    }
 
-// ** Parterns **//
-// Unifrom partern
-function decorationType3(id) {
-    $('.cat__head-dots, #leftDot,+id #rightDot' + id).css({ "height": "40px" })
-}
+    function animationType2(){
+        removeAnimation()
+        $(".ears").addClass("movingEars");
+    }
 
-//Combination of 3 and 4
-function decorationType4(id) {
-    $('.cat__head-dots, #leftDot,+id #rightDot' + id).css({ "height": "40px", "transform": "rotate(180deg)" })
-}
+    function animationType3(){
+        removeAnimation()
+        $(".eyes").addClass("movingEyes");
+    }
 
-//Tribal decoration
-function decorationType5(id) {
-    $('#midDot' + id).css({ "transform": "rotate(180deg)", "height": "50px", "border-radius": "50% 50% 50% 50%" })
-    $('#leftDot' + id).css({ "transform": "rotate(35deg)", "height": "40px" })
-    $('#rightDot' + id).css({ "transform": "rotate(-35deg)", "height": "40px" })
-}
+    function animationType4(){
+        removeAnimation()
+        $(".foot").addClass("movingFeet");
+    }
 
-//Sides down
-function decorationType6(id) {
-    $('#midDot' + id).css({ "transform": "rotate(180deg)", "height": "50px", "border-radius": "50% 50% 50% 50%" })
-    $('#leftDot' + id).css({ "transform": "rotate(135deg)", "height": "45px", "top": "-25px" })
-    $('#rightDot' + id).css({ "transform": "rotate(-135deg)", "height": "45px", "top": "-25px" })
+    function animationType5(){
+        removeAnimation()
+        $(".belly").addClass("movingBelly");
+    }
 
-}
+    function animationType6(){
+        removeAnimation()
+        $(".tail").addClass("movingTail");
+    }
 
-//Single dot decoration
-function decorationType7(id) {
-    var dots2 = $('#leftDot' + id)
-    var dots3 = $('#rightDot' + id)
-    dots2.css('height', '0px')
-    dots3.css('height', '0px')
-
-}
-
-/** Animations **/
-
-async function resetAnimation(id) {
-    document.getElementById("head" + id).classList.remove("movingHead")
-    document.getElementById("leftEar" + id).classList.remove("movingEarsLeft", "moving-Single-EarLeft", "attentionLeft")
-    document.getElementById("rightEar" + id).classList.remove("movingEarsRight", "moving-Single-EarRight", "attentionRight")
-    document.getElementById("tail" + id).classList.remove("movingTail")
-
-}
-
-function movingHead(id) {    
-    $('#head' + id).addClass('movingHead')
-    $('#leftEar' + id).addClass('movingEarsLeft')
-    $('#rightEar' + id).addClass('movingEarsRight')
-}
-
-function movingTail(id) {    
-    $('#tail' + id).addClass('movingTail')
-
-}
-
-//moving both ears
-function movingEars(id) {    
-    $('#leftEar' + id).addClass('movingEarsLeft')
-    $('#rightEar' + id).addClass('movingEarsRight')
-
-}
-
-// Single Ears
-
-function leftEar(id) {    
-    $('#leftEar' + id).addClass('moving-Single-EarLeft')
-
-}
-
-function rightEar(id) {    
-    $('#rightEar' + id).addClass('moving-Single-EarRight')
-
-}
-
-// Attentive Cat Ears animation
-
-function attentiveCat(id) {    
-    $('#leftEar' + id).addClass('attentionLeft')
-    $('#rightEar' + id).addClass('attentionRight')
-
-}
-
-
-// Eyes of the car followign the cursor
-const closer = 4;
-const further = -4;
-
-document.addEventListener('mousemove', (e) => {
-    let positionX = e.pageX;
-    let positionY = e.pageY;
-
-    let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-
-    let moveX = (positionX - width) / (width) * closer;
-    let moveY = (positionY - height) / (height) * closer;
-
-    $('.pupil-left').css('transform', 'translate(' + moveX + 'px,' + moveY + 'px)')
-    $('.pupil-right').css('transform', 'translate(' + moveX + 'px,' + moveY + 'px)')
-
-}, false);
+    function animationType7(){
+        removeAnimation()
+    }
+    function removeAnimation(){
+        $(".cat_head").removeClass("movingHead")
+        $(".ears").removeClass("movingEars")
+        $(".eyes").removeClass("movingEyes")
+        $(".foot").removeClass("movingFeet")
+        $(".belly").removeClass("movingBelly")
+        $(".tail").removeClass("movingTail")
+    }
