@@ -13,6 +13,9 @@ contract kittyContract is IERC721, Ownable {
     string public constant tokenSymbol = "MK";
 
     bytes4 internal constant MAGIC_ERC721_RECEIVED = bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"));
+    bytes4 private constant __INTERFACE_TO_ERC721 = 0x80ac58cd;
+    bytes4 private constant __INTERFACE_TO_ERC165 = 0x01ffc9a7;
+
 
     uint256 public gen0Counter;
     
@@ -34,11 +37,37 @@ contract kittyContract is IERC721, Ownable {
 
     Kitty[] kitties;
 
-
     mapping (address => uint256) ownershipTokenCount;
     mapping (uint256 => address) public kittyIndexToOwner;
     mapping (uint256 => address) public kittyIndexToApproved;
     mapping (address => mapping(address => bool)) private _operatorApprovals;
+
+function supportsInterface( bytes4 _interfaceId) external pure returns (bool){
+    return (_interfaceId == __INTERFACE_TO_ERC165 || _interfaceId == __INTERFACE_TO_ERC721);
+}
+
+function breed(uint256 _mumId, uint256 _dadId) public {
+    require(_owns(msg.sender, _mumId), "The user does not own the token");
+    require(_owns(msg.sender, _dadId), "The user does not own the token");
+
+    (uint256 dadDna,,,,uint256 DadGeneration) = getKitty(_dadId);
+    (uint256 mumDna,,,,uint256 MumGeneration) = getKitty(_mumId);
+    uint256 newDna = _mixDna(dadDna, mumDna);
+
+    uint256 kidGen = 0;
+
+    if (DadGeneration < MumGeneration){
+        kidGen = MumGeneration + 1;
+        kidGen /=2;
+    } else if (DadGeneration > MumGeneration){
+        kidGen = DadGeneration + 1;
+        kidGen /=2;
+    } else{
+        kidGen = MumGeneration + 1;
+    }
+
+    _createKitty(_mumId, _dadId, kidGen, newDna, msg.sender);
+}
 
 function createKittyGen0(uint256 _genes) public onlyOwner returns(uint256){
     require(gen0Counter< CREATION_LIMIT_GEN0);
@@ -49,7 +78,7 @@ function createKittyGen0(uint256 _genes) public onlyOwner returns(uint256){
 
 }
 
-function getKitty(uint256 _tokenId) external view returns(
+function getKitty(uint256 _tokenId) public view returns(
         uint256 genes, 
         uint256 birthTime, 
         uint256 mumId, 
@@ -92,11 +121,11 @@ function _createKitty(
 }
 
 
-function balanceOf(address owner) external view override returns (uint256){
+function balanceOf(address owner) public view override returns (uint256){
     return ownershipTokenCount[owner];
 }
 
-function totalSupply() external view override returns (uint256){
+function totalSupply() public view override returns (uint256){
     return kitties.length;
 }
 
@@ -111,6 +140,7 @@ function symbol() external pure override returns (string memory){
 function ownerOf(uint256 _tokenId) external view override returns (address){
     return kittyIndexToOwner[_tokenId];
 }
+
 
 function _safeTransfer(address _from, address _to, uint256 _tokenId, bytes memory _data) internal{
     _transfer(_from, _to, _tokenId);
@@ -216,5 +246,37 @@ function _isContract(address _to) view internal returns(bool){
     }
     return size > 0;
 }
+
+function _mixDna(uint256 _mumId, uint256 _dadId) internal pure returns(uint256){
+    uint256 firstHalf = _mumId / 100000000;
+    uint256 secondHalf = _dadId % 100000000;
+
+    uint256 newDna = firstHalf * 100000000;
+    newDna = newDna + secondHalf;
+
+    return newDna;
+}
+
+function tokensOfOwner(address _owner) public view returns(uint256[] memory ownerTokens) {
+    uint256 tokenCount = balanceOf(_owner);
+
+    if (tokenCount == 0) {
+        return new uint256[](0);
+    } else {
+        uint256[] memory result = new uint256[](tokenCount);
+        uint256 totalCats = totalSupply();
+        uint256 resultIndex = 0;
+
+        uint256 catId;
+
+        for (catId = 1; catId <= totalCats; catId++) {
+            if (kittyIndexToOwner[catId] == _owner) {
+                result[resultIndex] = catId;
+                resultIndex++;
+            }
+        }
+
+        return result;
+    }
 
 }
