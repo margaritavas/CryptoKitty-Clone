@@ -36,7 +36,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/margaritagyorgiev/Desktop/IOT/Ethereum course advanced/CryptoKitties_Clone/academy-kitties-template/contracts/IERC721Receiver.sol\":\"IERC721Receiver\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/margaritagyorgiev/Desktop/IOT/Ethereum course advanced/CryptoKitties_Clone/academy-kitties-template/contracts/IERC721Receiver.sol\":{\"keccak256\":\"0x4362c38d0b445618117d44fdab2b1d7f8831b518f44a48ee1cdb2d8ca2d4143d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1ed471b360293cca6930180b67fe85a81fbd0080e7a94133f2fc7704ed2e3f64\",\"dweb:/ipfs/QmV8ooe9X9VGnFZGbxxS1N7W5JVPDGf4BnMCKoq6Y6F16k\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.6+commit.11564f7e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/margaritagyorgiev/Desktop/IOT/Ethereum course advanced/CryptoKitties_Clone/academy-kitties-template/contracts/IERC721Receiver.sol\":\"IERC721Receiver\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/margaritagyorgiev/Desktop/IOT/Ethereum course advanced/CryptoKitties_Clone/academy-kitties-template/contracts/IERC721Receiver.sol\":{\"keccak256\":\"0x4362c38d0b445618117d44fdab2b1d7f8831b518f44a48ee1cdb2d8ca2d4143d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1ed471b360293cca6930180b67fe85a81fbd0080e7a94133f2fc7704ed2e3f64\",\"dweb:/ipfs/QmV8ooe9X9VGnFZGbxxS1N7W5JVPDGf4BnMCKoq6Y6F16k\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -250,7 +250,8 @@
           }
         ],
         "scope": 151,
-        "src": "58:153:1"
+        "src": "58:153:1",
+        "usedErrors": []
       }
     ],
     "src": "33:178:1"
@@ -459,18 +460,19 @@
           }
         ],
         "scope": 151,
-        "src": "58:153:1"
+        "src": "58:153:1",
+        "usedErrors": []
       }
     ],
     "src": "33:178:1"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.8.3+commit.8d00100c.Emscripten.clang"
+    "version": "0.8.6+commit.11564f7e.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-06-17T20:29:59.753Z",
+  "updatedAt": "2021-07-04T21:29:48.588Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -155,15 +155,14 @@ async function catOffer(id) {
 //Apply cat CSS Styles from buidCat.js
 
 function renderCat(dna, id) {
-
-    headColor(dna.headcolor, id)
-    mouthAndBelly(dna.mouthColor, id)
-    eyeColor(dna.eyesColor, id)
-    earsAndPaw(dna.earsColor, id)
+  headColor(dna.headColor, id)
+    mouthColor(dna.mouthColor, id)
+    eyesColor(dna.eyesColor, id)
+    earsColor(dna.earsColor, id)
     eyeVariation(dna.eyesShape, id)
-    decorationVariation(dna.decorationPattern, id)
-    midColor(dna.decorationMidcolor, id)
-    SidesColor(dna.decorationSidescolor, id)
+    collarVariation(dna.collarShape, id)
+    shapeColor(dna.shapeColor, id)
+    collarColor(dna.collarColor, id)
     animationVariation(dna.animation, id)
 }
 
@@ -174,15 +173,15 @@ function catDna(dnaStr) {
 
     var dna = {
         //Colors
-        "headcolor": dnaStr.substring(0, 2),
+        "headColor": dnaStr.substring(0, 2),
         "mouthColor": dnaStr.substring(2, 4),
         "eyesColor": dnaStr.substring(4, 6),
         "earsColor": dnaStr.substring(6, 8),
         //Cattributes
         "eyesShape": dnaStr.substring(8, 9),
-        "decorationPattern": dnaStr.substring(9, 10),
-        "decorationMidcolor": dnaStr.substring(10, 12),
-        "decorationSidescolor": dnaStr.substring(12, 14),
+        "collarShape": dnaStr.substring(9, 10),
+        "shapeColor": dnaStr.substring(10, 12),
+        "collarColor": dnaStr.substring(12, 14),
         "animation": dnaStr.substring(14, 15),
         "lastNum": dnaStr.substring(15, 16)
     }
@@ -250,12 +249,12 @@ function catBody(id) {
     return single
 }
 
-function cattributes(id) {
+function cattributes() {
 
     var Cattributes = `<ul class="ml-5 cattributes">
-                            <li><span id="eyeName`+ id + `"></span> eyes</li>
-                            <li><span id="decorationName`+ id + `"></span> decoration</li>
-                            <li><span id="animationName`+ id + `"></span></li>
+                            <li><span id="eyeName"></span> eyes</li>
+                            <li><span id="shapeName"></span> decoration</li>
+                            <li><span id="animationName"></span> animation </li>
                         </ul>`
     return Cattributes
 

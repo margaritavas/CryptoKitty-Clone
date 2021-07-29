@@ -3,7 +3,7 @@ var web3 = new Web3(Web3.givenProvider);
 
 var instance;
 var user;
-var contractAddress="0xdF01e5dfeB6F11e2b08eA417BF4caf5219bdEe33";
+var contractAddress="0x26fAA1318db55b41D378E4148e349E76d7B94afF";
 
 
 $(document).ready(function(){

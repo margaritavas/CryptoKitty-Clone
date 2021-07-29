@@ -4,7 +4,7 @@
 
 var colors = Object.values(allColors())
 
-function headcolor(color,code) {
+function headColor(color,code) {
     $('.cat_head, .body').css('background', '#' + color)  //This changes the color of the cat
     $('#headcode').html('code: '+code) //This updates text of the badge next to the slider
     $('#dnabody').html(code) //This updates the body color part of the DNA that is displayed below the cat
@@ -72,6 +72,7 @@ function eyeVariation(num) {
 
 function normalEyes() {
     $('.eye').css('border', 'none')
+    
 }
 
 function eyesType1() {
@@ -79,17 +80,21 @@ function eyesType1() {
       $('.eye').css('border-top', '8px solid')
       $('.inner_eye_big').css('width', '7px')
       $('.inner_eye_big').css('left', '15px')
-      $('.inner_eye_small').css('display', 'none')
-      $('.inner_eye_smallest').css('display', 'none')
+      /*$('.inner_eye_small').css('display', 'none')
+      $('.inner_eye_smallest').css('display', 'none')*/
+      $('.pupils').css('width', '28px')
+      $('.pupils').css('left', '6px')
 }
 
  function eyesType2() {
     normalEyes()
-     $('.pupils').css('width', '10px')
+     $('.pupils').css('width', '14px')
      $('.pupils').css('left', '16px')
-     $('.inner_eye_big').css('display', 'none')
-     $('.inner_eye_small').css('display', 'none')
-     $('.inner_eye_smallest').css('display', 'none')
+     $('.pupils').css('top', '6px')
+     $('.inner_eye_big').css('width', '3px')
+     $('.inner_eye_big').css('left', '6px')
+     $('.inner_eye_small').css('left', '6px')
+     $('.inner_eye_smallest').css('left', '1px')
 }
 
  function eyesType3() {
@@ -99,9 +104,10 @@ function eyesType1() {
      $('.pupils').css('top', '0px')
      $('.inner_eye_big').css('width', '7px')
      $('.inner_eye_big').css('left', '15px')
-     $('.inner_eye_small').css('display', 'none')
-     $('.inner_eye_smallest').css('display', 'none')
-    
+     $('.inner_eye_small').css('left', '14px')
+     $('.inner_eye_smallest').css('left', '6px')
+     $('.inner_eye_smallest').css('top', '26px')
+     
 }
 
 function collarVariation(num) {
@@ -135,7 +141,15 @@ function collarVariation(num) {
     }
 }
 function normalCollar() {
+    $('.collar_shape').css('display', 'block')
+    $('.collar_shape').css('border-radius', '50%')
+    $('.collar_shape').css('width', '25px')
+    $('.collar_shape').css('height', '25px')
+    $('.collar_shape').css('left', '28px')
+    $('.collar_shape').css('top', '6px')
+    $('.collar_shape').css('transform', 'rotate(-5deg)')
     $('.collar_shape').css('border', 'none')
+    
 }
 
      function collarShape1() {
@@ -145,7 +159,6 @@ function normalCollar() {
          $('.collar_shape').css('left', '30px')
          $('.collar_shape').css('top', '6px')
          $('.collar_shape').css('transform', 'rotate(-1deg)')
-         normalCollar()
     }
 
      function collarShape2() {
@@ -172,7 +185,7 @@ function normalCollar() {
         normalCollar()
         $('.collar_shape').css('display', 'none')        
    }
-   
+     
    function animationVariation(num) {
     $('#dnaanimation').html(num)
     switch (num) {
